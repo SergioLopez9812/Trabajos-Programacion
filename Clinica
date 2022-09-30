@@ -1,0 +1,275 @@
+package clinica;
+
+
+public final class Paciente {
+	
+	private String id;
+	private String nombre;
+	private String apellidos;
+	private int edad;
+	private String genero;
+	
+	public Paciente(String id, String nombre, String apellidos, int edad, String genero) {
+		this.id = id;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.edad = edad;
+		this.genero = genero;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+	
+	public void mostrar() {
+		System.out.println("\n\t---------------");
+		System.out.println("ID Paciente: " + id);
+		System.out.println("Nombre: " + nombre);
+		System.out.println("Apellidos: " + apellidos);
+		System.out.println("Edad: " + edad);
+		System.out.println("Genero: " + genero);
+		System.out.println("\t---------------");
+	}
+}
+
+
+
+package clinica;
+
+public final class Medico {
+	
+	private String id;
+	private String nombre;
+	private String apellidos;
+	private String especialidad;
+	
+	public Medico(String id, String nombre, String apellidos, String especialidad) {
+		this.id = id;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.especialidad = especialidad;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public String getEspecialidad() {
+		return especialidad;
+	}
+
+	public void setEspecialidad(String especialidad) {
+		this.especialidad = especialidad;
+	}
+	
+	
+	public void mostrar() {
+		System.out.println("\n\t---------------");
+		System.out.println("ID Medico: " + id);
+		System.out.println("Nombre: " + nombre);
+		System.out.println("Apellidos: " + apellidos);
+		System.out.println("Especialidad: " + especialidad);
+		System.out.println("\t---------------");
+	}
+
+}
+
+package clinica;
+
+public final class HistorialClinico {
+
+	private String codigo;
+	private String fecha;
+	private String idPaciente;
+	private String idMedico;
+	private String observaciones;
+	
+	public HistorialClinico(String codigo, String fecha, String idPaciente,
+			String idMedico, String observaciones) {
+		this.codigo = codigo;
+		this.fecha = fecha;
+		this.idPaciente = idPaciente;
+		this.idMedico = idMedico;
+		this.observaciones = observaciones;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+	public String getIdPaciente() {
+		return idPaciente;
+	}
+
+	public void setIdPaciente(String idPaciente) {
+		this.idPaciente = idPaciente;
+	}
+
+	public String getIdMedico() {
+		return idMedico;
+	}
+
+	public void setIdMedico(String idMedico) {
+		this.idMedico = idMedico;
+	}
+
+	public String getObservaciones() {
+		return observaciones;
+	}
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+	
+	
+	public void mostrar() {
+		System.out.println("\n\t---------------");
+		System.out.println("Codigo Historial: " + codigo);
+		System.out.println("Fecha: " + fecha);
+		System.out.println("ID Pacielnte: " + idPaciente);
+		System.out.println("ID Medico: " + idMedico);
+		System.out.println("Observaciones:\n" + observaciones);
+		System.out.println("\t---------------");
+	}
+}
+
+
+package clinica;
+
+import java.util.Scanner;
+
+import java.util.ArrayList;
+
+public final class GestorPacientes {
+	
+	private final ArrayList<Paciente> pacientes;
+	private final Scanner teclado;
+	
+	public GestorPacientes() {
+		pacientes = new ArrayList<>();
+		teclado = new Scanner(System.in);
+	}
+	
+	
+	public boolean nuevoPaciente() {
+		System.out.println("\n\tALTA NUEVO PACIENTE");
+		System.out.print("Introduzca Codigo: ");
+		String id = teclado.nextLine();
+		System.out.print("Nombre: ");
+		String nombre = teclado.nextLine();
+		System.out.print("Apellidos: ");
+		String apellidos = teclado.nextLine();
+		System.out.print("Genero: ");
+		String genero = teclado.nextLine();
+		System.out.print("Edad: ");
+		int edad = teclado.nextInt();
+		teclado.nextLine();
+		Paciente nuevoPaciente = new Paciente(id, nombre, apellidos, edad, genero);
+		return pacientes.add(nuevoPaciente);
+	}
+	
+	
+	public void mostrarPacientes() {
+		for (Paciente p: pacientes)
+			p.mostrar();
+	}
+
+    void modificarPaciente() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    void borrarPaciente() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+}
+
+
+package clinica;
+
+
+public final class TestClinica {
+	
+	static GestorPacientes pacientes = new GestorPacientes();
+
+	public static void main(String[] args) {
+		
+		pacientes.nuevoPaciente();
+		pacientes.nuevoPaciente();
+		pacientes.mostrarPacientes();
+		pacientes.modificarPaciente();
+		pacientes.mostrarPacientes();
+		pacientes.borrarPaciente();
+		pacientes.mostrarPacientes();
+
+	}
+
+}
